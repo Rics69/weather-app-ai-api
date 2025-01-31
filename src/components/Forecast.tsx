@@ -16,8 +16,8 @@ const Forecast = ({type, title, data}:Props) => {
                 <h3>{title}</h3>
                 <div className="widget-container">
                     {
-                        data.map((singleData) => (
-                            <div>
+                        data.map((singleData, i) => (
+                            <div key={i}>
                                 {
                                     type === "hourly" ? <HourlyForecastWidget data={singleData}/> : <DailyForecastWidget data={singleData}/>
                                 }
