@@ -1,11 +1,7 @@
-import {getCurrentWeather} from "../api";
-
 import '../styles/components/CurrentWeather.scss'
 import WeatherIcon from "./WeatherIcon.tsx";
 
-const CurrentWeather = () => {
-    const data = getCurrentWeather();
-
+const CurrentWeather = ({data}) => {
     const {
         cloud_cover,
         feels_like,
