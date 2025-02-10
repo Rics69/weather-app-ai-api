@@ -28,6 +28,7 @@ function WeatherProvider({ children }: { children?: React.ReactNode }) {
     const [hourlyForecast, setHourlyForecast] = useState([]);
     const [dailyForecast, setDailyForecast] = useState([]);
     const [measurementSystem, setMeasurementSystem] = useState<string>(MEASUREMENT_SYSTEMS.AUTO );
+    const [units, setUnits] = useState({});
 
     useEffect(() => {
         async function _getWeatherData() {
