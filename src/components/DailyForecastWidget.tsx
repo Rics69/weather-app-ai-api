@@ -1,4 +1,6 @@
 import WeatherIcon from "./WeatherIcon.tsx";
+import {useContext} from "react";
+import WeatherContext from "../context/weather.context.tsx";
 
 type Props = {
     data: {
@@ -14,6 +16,15 @@ type Props = {
 }
 
 const DailyForecastWidget = ({data} : Props) => {
+
+    const context = useContext(WeatherContext);
+
+    if (!context) {
+        throw new Error("App must be used within a WeatherProvider");
+    }
+
+    const { units } = context;
+
     const {day, icon, summary, temperature_max, temperature_min, precipitation} = data;
 
     const now_date = {
@@ -42,15 +53,15 @@ const DailyForecastWidget = ({data} : Props) => {
                 </div>
                 <div className="temperature">
                     <div className="max">
-                        {Math.round(temperature_max)} °C
+                        {Math.round(temperature_max)} {units.temperature}
                     </div>
                     <div className="min">
-                        {Math.round(temperature_min)} °C
+                        {Math.round(temperature_min)} {units.temperature}
                     </div>
                 </div>
             </div>
             <div className="precipitation">
-                {Math.round(precipitation.total)} mm/h
+                {Math.round(precipitation.total)} {units.precipitation}
             </div>
         </div>
     )

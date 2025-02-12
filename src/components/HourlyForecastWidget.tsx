@@ -1,6 +1,8 @@
 import WeatherIcon from "./WeatherIcon.tsx";
 
 import '../styles/components/CurrentWeather.scss'
+import {useContext} from "react";
+import WeatherContext from "../context/weather.context.tsx";
 
 type Props = {
     data: {
@@ -19,6 +21,15 @@ type Props = {
 }
 
 const HourlyForecastWidget = ({data}:Props) => {
+
+    const context = useContext(WeatherContext);
+
+    if (!context) {
+        throw new Error("App must be used within a WeatherProvider");
+    }
+
+    const { units } = context;
+
     const {date, icon, summary, temperature, precipitation, wind} = data;
 
     const now_date = {
@@ -55,15 +66,15 @@ const HourlyForecastWidget = ({data}:Props) => {
                     <WeatherIcon iconNumber={icon} alt={summary} />
                 </div>
                 <div className="temperature">
-                    {Math.round(temperature)} °C
+                    {Math.round(temperature)} {units.temperature}
                 </div>
             </div>
             <div className="precipitation">
-                {Math.round(precipitation.total)} mm/h
+                {Math.round(precipitation.total)} {units.precipitation}
             </div>
             <div className="wind">
                 <div className="speed">
-                    {Math.round(wind.speed)} mph
+                    {Math.round(wind.speed)} {units.wind.speed}
                 </div>
                 <div
                     className='dir'
