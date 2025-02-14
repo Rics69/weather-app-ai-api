@@ -14,6 +14,11 @@ const Search = () => {
                         placeholder="Search city ..."
                     />
                 </div>
+                <div className="search-results">
+                    <div className="results-container">
+
+                    </div>
+                </div>
             </div>
         </>
     )
