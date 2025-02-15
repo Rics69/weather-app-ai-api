@@ -16,7 +16,9 @@ const Search = () => {
                 </div>
                 <div className="search-results">
                     <div className="results-container">
-
+                        {
+                            <div className="result">Test</div>
+                        }
                     </div>
                 </div>
             </div>
