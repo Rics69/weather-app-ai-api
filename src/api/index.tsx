@@ -23,3 +23,25 @@ export async function getWeatherData(endpoint, place_id, measurementSystem) {
         console.error(error);
     }
 }
+
+export async function searchPlaces(text) {
+    const options = {
+        method: 'GET',
+        url: 'https://ai-weather-by-meteosource.p.rapidapi.com/find_places',
+        params: {
+            text: text,
+            language: 'en'
+        },
+        headers: {
+            'x-rapidapi-key': 'eff24adea2msh37e325c444aba22p1c2bc9jsn03c7fbdec311',
+            'x-rapidapi-host': 'ai-weather-by-meteosource.p.rapidapi.com'
+        }
+    };
+
+    try {
+        const response = await axios.request(options);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
