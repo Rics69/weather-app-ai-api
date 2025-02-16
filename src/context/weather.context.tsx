@@ -50,7 +50,7 @@ function WeatherProvider({ children }: { children?: React.ReactNode }) {
     }, [place, measurementSystem]);
 
     return (
-        <WeatherContext.Provider value={{place, loading, currentWeather, hourlyForecast, dailyForecast, measurementSystem, setMeasurementSystem, units}}>
+        <WeatherContext.Provider value={{place, setPlace, loading, currentWeather, hourlyForecast, dailyForecast, measurementSystem, setMeasurementSystem, units}}>
             {children}
         </WeatherContext.Provider>
     )

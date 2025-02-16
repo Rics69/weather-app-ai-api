@@ -74,7 +74,7 @@ const HourlyForecastWidget = ({data}:Props) => {
             </div>
             <div className="wind">
                 <div className="speed">
-                    {Math.round(wind.speed)} {units.wind.speed}
+                    {Math.round(wind.speed)} {units.wind_speed}
                 </div>
                 <div
                     className='dir'
